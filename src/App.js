@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {Route, Redirect} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 
 import LoginForm from './components/LoginForm'
 import Home from './components/Home'
@@ -106,7 +106,7 @@ class App extends Component {
           incrementCartItemQuantity: this.incrementCartItemQuantity,
         }}
       >
-        <>
+        <Switch>
           <Route exact path="/login" component={LoginForm} />
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/products" component={Products} />
@@ -118,7 +118,7 @@ class App extends Component {
           <ProtectedRoute exact path="/cart" component={Cart} />
           <Route path="/not-found" component={NotFound} />
           <Redirect to="not-found" />
-        </>
+        </Switch>
       </CartContext.Provider>
     )
   }
